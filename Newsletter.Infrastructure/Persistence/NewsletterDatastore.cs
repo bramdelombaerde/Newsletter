@@ -26,7 +26,7 @@ internal class DataStoreDesignTimeFactory : IDesignTimeDbContextFactory<Newslett
         return new NewsletterDatastore(
             new DbContextOptionsBuilder<NewsletterDatastore>()
                 .UseSqlServer(
-                    "Server=localhost;Initial Catalog=sqldbnewsletter;Integrated Security=true;MultipleActiveResultSets=true")
+                    "Server=localhost\\SQLEXPRESS;Database=newsletter;Trusted_Connection=True;")
                 .Options);
     }
 }

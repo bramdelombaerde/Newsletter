@@ -15,4 +15,8 @@
     <ProjectReference Include="..\Newsletter.Domain\Newsletter.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Persistence\Sql\Migrations\" />
+  </ItemGroup>
+
 </Project>
