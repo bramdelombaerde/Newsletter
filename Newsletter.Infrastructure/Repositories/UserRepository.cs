@@ -19,8 +19,9 @@ namespace Newsletter.Infrastructure.Repositories
                 .Users
                 .Include(x => x.Subscriptions)
                     .ThenInclude(x => x.Titel)
-                .SingleAsync(x => x.Id == id);
+                .SingleOrDefaultAsync(x => x.Id == id);
         }
+
         public async Task<bool> DoesUserAlreadyExist(string email)
         {
             return await _dbContext

@@ -28,7 +28,7 @@ namespace Newsletter.Infrastructure.Repositories
                 .Titels
                 .Include(x => x.Subscriptions)
                     .ThenInclude(x => x.User)
-                .SingleAsync(x => x.Id == id);
+                .SingleOrDefaultAsync(x => x.Id == id);
         }
     }
 }
