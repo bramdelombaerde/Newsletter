@@ -16,6 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Newsletter.Core\Newsletter.Core.csproj" />
     <ProjectReference Include="..\Newsletter.Domain\Newsletter.Domain.csproj" />
   </ItemGroup>
 

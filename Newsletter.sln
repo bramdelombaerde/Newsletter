@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.Api", "Newsletter.Api\Newsletter.Api.csproj", "{CB671242-39EE-4858-BA93-107B4A8CD6C1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newsletter.Api", "Newsletter.Api\Newsletter.Api.csproj", "{CB671242-39EE-4858-BA93-107B4A8CD6C1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.Domain", "Newsletter.Domain\Newsletter.Domain.csproj", "{6026FA84-69FE-4E15-AE27-E8088F93DB6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newsletter.Domain", "Newsletter.Domain\Newsletter.Domain.csproj", "{6026FA84-69FE-4E15-AE27-E8088F93DB6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.Application", "Newsletter.Application\Newsletter.Application.csproj", "{8A6A096B-328B-4D2C-AA5F-078D967AE73F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newsletter.Application", "Newsletter.Application\Newsletter.Application.csproj", "{8A6A096B-328B-4D2C-AA5F-078D967AE73F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.Infrastructure", "Newsletter.Infrastructure\Newsletter.Infrastructure.csproj", "{1B881062-BF37-4842-98E6-0B56AEC80928}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newsletter.Infrastructure", "Newsletter.Infrastructure\Newsletter.Infrastructure.csproj", "{1B881062-BF37-4842-98E6-0B56AEC80928}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.Core", "Newsletter.Core\Newsletter.Core.csproj", "{DE101D46-D9F0-40AE-B694-B1BB82FACFF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1B881062-BF37-4842-98E6-0B56AEC80928}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1B881062-BF37-4842-98E6-0B56AEC80928}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1B881062-BF37-4842-98E6-0B56AEC80928}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE101D46-D9F0-40AE-B694-B1BB82FACFF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE101D46-D9F0-40AE-B694-B1BB82FACFF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE101D46-D9F0-40AE-B694-B1BB82FACFF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE101D46-D9F0-40AE-B694-B1BB82FACFF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
