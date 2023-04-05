@@ -25,5 +25,14 @@ namespace Newsletter.Domain
 
             Subscriptions.Add(subscription);
         }
+
+        public void RemoveSubscription(Guid titelId)
+        {
+            var subscription = Subscriptions.FirstOrDefault(x => x.Titel.Id == titelId);
+            if (subscription == null)
+                throw new SubscriptionException("User is not subscribed");
+
+            Subscriptions.Remove(subscription);
+        }
     }
 }
