@@ -17,6 +17,9 @@ namespace Newsletter.Application.Titel
         }
         public async Task<IResult<CreateTitelResponse>> Handle(CreateTitelCommand request, CancellationToken cancellationToken)
         {
+            if (await _titels.DoesTitelAlreadyExist(request.ShortName))
+                return Result.BusinessRuleError<CreateTitelResponse>("This title already exists");
+
             var titel = new Domain.Titel(request.ShortName, request.Name);
             await _titels.Create(titel);
             await _titels.SaveChangesAsync(cancellationToken);
