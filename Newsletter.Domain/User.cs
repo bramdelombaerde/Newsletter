@@ -1,4 +1,6 @@
-﻿namespace Newsletter.Domain
+﻿using Newsletter.Domain.Exceptions;
+
+namespace Newsletter.Domain
 {
     public class User : BaseEntity
     {
@@ -18,6 +20,9 @@
 
         public void AddSubscription(Subscription subscription)
         {
+            if (Subscriptions.Any(x => x.Titel.Id == subscription.Titel.Id))
+                throw new SubscriptionException("User is already subscribed");
+
             Subscriptions.Add(subscription);
         }
     }

@@ -24,14 +24,18 @@ namespace Newsletter.Application.User
             if (user == null) Result.NotFound($"UserId '{request.UserId}' not found");
             if (titel == null) Result.NotFound($"TitelId '{request.TitelId}' not found");
 
-            if (user.Subscriptions.Any(x => x.Titel.Id == request.TitelId))
-                return Result.BusinessRuleError<CreateSubscriptionResponse>("User is already subscribed");
-
             var subscription = new Domain.Subscription() { Titel = titel };
 
-            user.AddSubscription(subscription);
-            await _users.SaveChangesAsync();
+            try
+            {
+                user.AddSubscription(subscription);
+            }
+            catch (Exception ex)
+            {
+                return Result.BusinessRuleError<CreateSubscriptionResponse>(ex.Message);
+            }
 
+            await _users.SaveChangesAsync();
             return Result.Success(new CreateSubscriptionResponse(subscription.Id));
         }
     }
