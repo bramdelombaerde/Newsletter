@@ -13,6 +13,14 @@ namespace Newsletter.Infrastructure.Repositories
 
         }
 
+        public async Task<User> GetById(Guid id)
+        {
+            return await _dbContext
+                .Users
+                .Include(x => x.Subscriptions)
+                    .ThenInclude(x => x.Titel)
+                .SingleAsync(x => x.Id == id);
+        }
         public async Task<bool> DoesUserAlreadyExist(string email)
         {
             return await _dbContext

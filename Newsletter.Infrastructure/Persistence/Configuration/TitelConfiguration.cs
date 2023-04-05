@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Newsletter.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Newsletter.Infrastructure.Persistence.Configuration
 {
@@ -23,6 +17,9 @@ namespace Newsletter.Infrastructure.Persistence.Configuration
             builder
                 .Property(x => x.ShortName)
                 .IsRequired();
+
+            builder.HasMany(x => x.Subscriptions)
+                .WithOne(x => x.Titel);
         }
     }
 }

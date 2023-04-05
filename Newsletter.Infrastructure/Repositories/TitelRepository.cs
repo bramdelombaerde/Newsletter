@@ -21,5 +21,14 @@ namespace Newsletter.Infrastructure.Repositories
                     x.ShortName.Equals(shortName)
                 );
         }
+
+        public async Task<Titel> GetById(Guid id)
+        {
+            return await _dbContext
+                .Titels
+                .Include(x => x.Subscriptions)
+                    .ThenInclude(x => x.User)
+                .SingleAsync(x => x.Id == id);
+        }
     }
 }

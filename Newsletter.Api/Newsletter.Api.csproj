@@ -17,4 +17,8 @@
     <ProjectReference Include="..\Newsletter.Infrastructure\Newsletter.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Models\Subscription\" />
+  </ItemGroup>
+
 </Project>

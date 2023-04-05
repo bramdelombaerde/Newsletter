@@ -24,7 +24,20 @@ namespace Newsletter.Api.Controllers
             : Ok(result.Value);
         }
 
-        [HttpPost(Name = "CreateUser")]
+        [HttpPost("{userId:guid}/subscribe/{titelId:guid}", Name = "CreateSubscription")]
+        public async Task<IActionResult> Post(Guid userId, Guid titelId)
+        {
+            var result = await _sender.Send(
+                new CreateSubscriptionCommand(userId,
+                titelId)
+            );
+
+            return result.IsFailure
+            ? ErrorActionResult(result)
+            : Ok(result.Value);
+        }
+
+        [HttpPost(Name = "AddSubscription")]
         public async Task<IActionResult> Post([FromBody] CreateUser createUser)
         {
             var result = await _sender.Send(

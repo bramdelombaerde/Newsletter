@@ -24,6 +24,8 @@ namespace Newsletter.Infrastructure.Persistence.Configuration
             builder.Property(x => x.LastName)
                 .IsRequired();
 
+            builder.HasMany(x => x.Subscriptions)
+                .WithOne(x => x.User);
 
         }
     }
