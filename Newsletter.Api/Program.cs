@@ -1,4 +1,7 @@
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Newsletter.Api.Infrastructure;
+using Newsletter.Api.Models.Titel.Validation;
 using Newsletter.Application.Titel;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,12 +13,13 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<CreateTitelCommand>());
+builder.Services.AddValidatorsFromAssemblyContaining<CreateTitelValidator>()
+    .AddFluentValidationAutoValidation();
 
 ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddDbContext(configuration.GetConnectionString("Database"));
 builder.Services.AddCustomServices();
-
 
 var app = builder.Build();
 

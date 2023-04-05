@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore;
 using Newsletter.Infrastructure.Persistence;
 using Newsletter.Infrastructure.Repositories;
 using System.Reflection;
