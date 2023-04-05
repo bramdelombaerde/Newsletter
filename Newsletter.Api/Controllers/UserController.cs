@@ -14,6 +14,16 @@ namespace Newsletter.Api.Controllers
         {
         }
 
+        [HttpGet(Name = "GetUsers")]
+        public async Task<IActionResult> Get()
+        {
+            var result = await _sender.Send(new GetAllUsersQuery());
+
+            return result.IsFailure
+            ? ErrorActionResult(result)
+            : Ok(result.Value);
+        }
+
         [HttpPost(Name = "CreateUser")]
         public async Task<IActionResult> Post([FromBody] CreateUser createUser)
         {
