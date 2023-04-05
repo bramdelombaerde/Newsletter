@@ -21,8 +21,8 @@ namespace Newsletter.Application.User
             var user = await _users.GetById(request.UserId);
             var titel = await _titels.GetById(request.TitelId);
 
-            if (user == null) Result.NotFound($"UserId '{request.UserId}' not found");
-            if (titel == null) Result.NotFound($"TitelId '{request.TitelId}' not found");
+            if (user == null) return Result.NotFound<RemoveSubscriptionResponse>($"UserId '{request.UserId}' not found");
+            if (titel == null) return Result.NotFound<RemoveSubscriptionResponse>($"TitelId '{request.TitelId}' not found");
 
             try
             {
