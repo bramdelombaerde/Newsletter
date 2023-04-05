@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Newsletter.Application.Shared;
 using Newsletter.Core.Repositories;
 using System;
 using System.Collections.Generic;
@@ -8,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Newsletter.Application.Titel
 {
-    public record CreateTitelCommand(string Name, string ShortName) : IRequest<CreatedTitelResponse>;
-    public record CreatedTitelResponse(Guid Id, string ShortName);
+    public record CreateTitelCommand(string Name, string ShortName) : IRequest<IResult<CreateTitelResponse>>;
+    public record CreateTitelResponse(Guid Id, string ShortName);
 
-    public class CreateTitelHandler : IRequestHandler<CreateTitelCommand, CreatedTitelResponse>
+    public class CreateTitelHandler : IRequestHandler<CreateTitelCommand, IResult<CreateTitelResponse>>
     {
         private readonly Titels _titels;
 
@@ -19,13 +20,13 @@ namespace Newsletter.Application.Titel
         {
             _titels = titels;
         }
-        public async Task<CreatedTitelResponse> Handle(CreateTitelCommand request, CancellationToken cancellationToken)
+        public async Task<IResult<CreateTitelResponse>> Handle(CreateTitelCommand request, CancellationToken cancellationToken)
         {
             var titel = new Domain.Titel(request.ShortName, request.Name);
             await _titels.Create(titel);
-            await _titels.SaveChangesAsync();
+            await _titels.SaveChangesAsync(cancellationToken);
 
-            return new CreatedTitelResponse(titel.Id, titel.ShortName);
+            return Result.Success(new CreateTitelResponse(titel.Id, titel.ShortName));
         }
     }
 }
