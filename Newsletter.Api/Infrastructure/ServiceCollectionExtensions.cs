@@ -25,10 +25,10 @@ namespace Newsletter.Api.Infrastructure
             return services;
         }
 
-        public static IServiceCollection AddDbContext(this IServiceCollection services)
+        public static IServiceCollection AddDbContext(this IServiceCollection services, string connectionString)
         {
-            services.AddDbContext<NewsletterDatastore>(options => 
-                options.UseSqlServer("Server=.\\SQLEXPRESS;Database=newsletter;Trusted_Connection=True;MultipleActiveResultSets=true;encrypt=false;")
+            services.AddDbContext<NewsletterDatastore>(options =>
+                options.UseSqlServer(connectionString)
             );
 
             return services;
