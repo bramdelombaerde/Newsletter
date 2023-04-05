@@ -1,6 +1,6 @@
 ﻿namespace Newsletter.Domain
 {
-    public class Titel
+    public class Titel : BaseEntity
     {
         public Titel(string shortName, string name)
         {
