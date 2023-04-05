@@ -1,12 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Newsletter.Core.Repositories.Base;
 using Newsletter.Infrastructure.Persistence;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Newsletter.Infrastructure.Repositories.Base;
 
@@ -20,9 +14,9 @@ public class RepositoryBase<TEntity> : IRepositoryBase<TEntity>
         this._dbContext = dbContext;
     }
 
-    public IQueryable<TEntity> GetAll()
+    public Task<List<TEntity>> GetAll()
     {
-        return _dbContext.Set<TEntity>().AsNoTracking();
+        return _dbContext.Set<TEntity>().AsNoTracking().ToListAsync();
     }
 
     public async Task Create(TEntity entity)

@@ -1,11 +1,9 @@
-﻿using System.Linq.Expressions;
-
-namespace Newsletter.Core.Repositories.Base;
+﻿namespace Newsletter.Core.Repositories.Base;
 
 public interface IRepositoryBase<TEntity>
     where TEntity : class
 {
-    IQueryable<TEntity> GetAll();
+    Task<List<TEntity>> GetAll();
     Task Create(TEntity entity);
     Task Create(IEnumerable<TEntity> entity);
     Task Update(TEntity entity);

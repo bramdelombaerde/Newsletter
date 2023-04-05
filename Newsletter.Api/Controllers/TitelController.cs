@@ -1,5 +1,4 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newsletter.Api.Infrastructure;
 using Newsletter.Api.Models.Titel;
@@ -12,12 +11,16 @@ namespace Newsletter.Api.Controllers
     public class TitelController : NewsletterControllerBase
     {
         public TitelController(ISender sender) : base(sender)
-        {}
+        { }
 
         [HttpGet(Name = "GetTitels")]
-        public IActionResult Get()
+        public async Task<IActionResult> Get()
         {
-            return Ok();
+            var result = await _sender.Send(new GetAllTitelsQuery());
+
+            return result.IsFailure
+            ? ErrorActionResult(result)
+            : Ok(result.Value);
         }
 
         [HttpPost(Name = "CreateTitel")]
@@ -25,7 +28,7 @@ namespace Newsletter.Api.Controllers
         {
             var result = await _sender.Send(
                 new CreateTitelCommand(
-                createTitel.Name, 
+                createTitel.Name,
                 createTitel.ShortName)
             );
 
