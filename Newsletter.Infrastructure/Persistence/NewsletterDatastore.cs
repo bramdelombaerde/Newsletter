@@ -12,6 +12,7 @@ public class NewsletterDatastore : DbContext
     }
 
     public DbSet<Titel> Titels { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public override int SaveChanges()
     {
