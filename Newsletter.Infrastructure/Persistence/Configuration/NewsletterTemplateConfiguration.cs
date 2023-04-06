@@ -18,8 +18,7 @@ namespace Newsletter.Infrastructure.Persistence.Configuration
 
             var converter = new ValueConverter<List<string>, string>(parameters =>
                 JsonConvert.SerializeObject(parameters),
-                parameters => JsonConvert.DeserializeObject<List<string>>(parameters)
-            );
+                parameters => JsonConvert.DeserializeObject<List<string>>(parameters));
 
             builder.Property(x => x.Tokens)
                 .HasConversion(converter);
