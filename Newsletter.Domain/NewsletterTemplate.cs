@@ -2,6 +2,10 @@
 {
     public class NewsletterTemplate : BaseEntity
     {
+        public NewsletterTemplate()
+        {
+
+        }
         public NewsletterTemplate(string templateName, Titel titel, string html, List<string> tokens)
         {
             TemplateName = templateName;
@@ -10,6 +14,7 @@
             Tokens = tokens;
         }
         public string TemplateName { get; set; }
+        public Guid TitelId { get; set; }
         public Titel Titel { get; set; }
         public string Html { get; set; }
         public List<string> Tokens { get; set; }

@@ -11,5 +11,6 @@
         public string ShortName { get; set; }
         public string Name { get; set; }
         public List<Subscription> Subscriptions { get; set; }
+        public List<NewsletterTemplate> NewsletterTemplates { get; set; }
     }
 }

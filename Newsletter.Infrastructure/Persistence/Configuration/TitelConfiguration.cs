@@ -20,6 +20,9 @@ namespace Newsletter.Infrastructure.Persistence.Configuration
 
             builder.HasMany(x => x.Subscriptions)
                 .WithOne(x => x.Titel);
+
+            builder.HasMany(x => x.NewsletterTemplates)
+                .WithOne(x => x.Titel).HasForeignKey(x => x.TitelId);
         }
     }
 }
