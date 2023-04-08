@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newsletter.Application", "N
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newsletter.Infrastructure", "Newsletter.Infrastructure\Newsletter.Infrastructure.csproj", "{1B881062-BF37-4842-98E6-0B56AEC80928}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Newsletter.Core", "Newsletter.Core\Newsletter.Core.csproj", "{DE101D46-D9F0-40AE-B694-B1BB82FACFF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Newsletter.Core", "Newsletter.Core\Newsletter.Core.csproj", "{DE101D46-D9F0-40AE-B694-B1BB82FACFF7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Assignment doc", "Assignment doc", "{D398E94F-43FB-4C7D-AE63-4D1DED0A6A2D}"
+	ProjectSection(SolutionItems) = preProject
+		Opdracht Senior Backend Developer.pdf = Opdracht Senior Backend Developer.pdf
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

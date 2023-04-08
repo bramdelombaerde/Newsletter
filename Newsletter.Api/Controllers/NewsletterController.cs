@@ -42,5 +42,16 @@ namespace Newsletter.Api.Controllers
             ? ErrorActionResult(result)
             : Ok(result.Value);
         }
+
+        [HttpPost("{newsletterId:guid}/Send", Name = "SendNewsletter")]
+        public async Task<IActionResult> SendNewsletter(Guid newsletterId)
+        {
+            //var result = await _sender.Send(
+            //    new ArchiveNewsletterCommand(newsletterId));
+
+            //return result.IsFailure
+            //? ErrorActionResult(result)
+            //: Ok(result.Value);
+        }
     }
 }
