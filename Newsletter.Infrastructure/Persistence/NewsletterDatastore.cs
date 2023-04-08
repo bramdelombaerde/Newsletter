@@ -27,6 +27,10 @@ public class NewsletterDatastore : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.ApplyConfiguration(new NewsletterTemplateConfiguration());
+        modelBuilder.ApplyConfiguration(new NewsletterConfiguration());
+        modelBuilder.ApplyConfiguration(new SubscriptionConfiguration());
+        modelBuilder.ApplyConfiguration(new TitelConfiguration());
+        modelBuilder.ApplyConfiguration(new UserConfiguration());
         base.OnModelCreating(modelBuilder);
     }
 
