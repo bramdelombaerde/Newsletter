@@ -18,5 +18,10 @@
         public int Version { get; set; }
         public string Content { get; set; }
         public bool IsArchived { get; set; }
+
+        public void Archive()
+        {
+            IsArchived = true;
+        }
     }
 }

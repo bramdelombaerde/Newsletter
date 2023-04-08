@@ -26,5 +26,12 @@ namespace Newsletter.Infrastructure.Repositories
             return highestVersion.Version + 1;
 
         }
+
+        public async Task<Domain.Newsletter> GetById(Guid id)
+        {
+            return await _dbContext
+                .Newsletters
+                .SingleOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

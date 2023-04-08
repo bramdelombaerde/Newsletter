@@ -5,5 +5,6 @@ namespace Newsletter.Core.Repositories
     public interface Newsletters : IRepositoryBase<Domain.Newsletter>
     {
         Task<int> GetNextVersionNumberForTitel(Guid titelId);
+        Task<Domain.Newsletter> GetById(Guid id);
     }
 }

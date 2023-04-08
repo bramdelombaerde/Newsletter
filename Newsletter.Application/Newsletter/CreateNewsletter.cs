@@ -37,11 +37,11 @@ namespace Newsletter.Application.Newsletter
             foreach (var token in request.Tokens)
                 content = content.Replace("{{" + token.Name + "}}", token.Value);
 
-            var Newsletter = new Domain.Newsletter(titel, nextVersionNumber, content);
-            await _newsletters.Create(Newsletter);
+            var newsletter = new Domain.Newsletter(titel, nextVersionNumber, content);
+            await _newsletters.Create(newsletter);
             await _newsletters.SaveChangesAsync(cancellationToken);
 
-            return Result.Success(new CreateNewsletterResponse(Newsletter.Id));
+            return Result.Success(new CreateNewsletterResponse(newsletter.Id));
 
         }
     }
