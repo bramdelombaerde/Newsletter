@@ -21,7 +21,6 @@ namespace Newsletter.Infrastructure.Repositories
                     x.ShortName.Equals(shortName)
                 );
         }
-
         public async Task<Titel> GetById(Guid id)
         {
             return await _dbContext

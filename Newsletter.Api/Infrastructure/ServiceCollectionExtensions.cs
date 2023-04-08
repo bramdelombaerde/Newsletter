@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Newsletter.Core.Helper;
+using Newsletter.Infrastructure.Helper;
 using Newsletter.Infrastructure.Persistence;
 using Newsletter.Infrastructure.Repositories;
 using System.Reflection;
@@ -22,6 +24,8 @@ namespace Newsletter.Api.Infrastructure
                     services.AddScoped(interfaceType, implementationType);
                 }
             }
+
+            services.AddScoped<IEmailSender, EmailSender>();
 
             return services;
         }

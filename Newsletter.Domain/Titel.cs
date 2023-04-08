@@ -7,7 +7,6 @@
             ShortName = shortName;
             Name = name;
         }
-        public Guid Id { get; set; }
         public string ShortName { get; set; }
         public string Name { get; set; }
         public List<Subscription> Subscriptions { get; set; }
