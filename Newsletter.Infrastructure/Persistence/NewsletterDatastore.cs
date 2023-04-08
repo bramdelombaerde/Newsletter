@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 using Newsletter.Domain;
-using Newsletter.Infrastructure.Persistence.Configuration;
+using System.Reflection;
 
 namespace Newsletter.Infrastructure.Persistence;
 
@@ -26,11 +26,7 @@ public class NewsletterDatastore : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfiguration(new NewsletterTemplateConfiguration());
-        modelBuilder.ApplyConfiguration(new NewsletterConfiguration());
-        modelBuilder.ApplyConfiguration(new SubscriptionConfiguration());
-        modelBuilder.ApplyConfiguration(new TitelConfiguration());
-        modelBuilder.ApplyConfiguration(new UserConfiguration());
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
         base.OnModelCreating(modelBuilder);
     }
 
