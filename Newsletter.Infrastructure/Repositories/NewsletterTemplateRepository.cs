@@ -22,5 +22,12 @@ namespace Newsletter.Infrastructure.Repositories
                     x.TemplateName.Equals(templateName) && x.Titel.Id == titelId
                 );
         }
+
+        public async Task<NewsletterTemplate> GetById(Guid id)
+        {
+            return await _dbContext
+                .NewsletterTemplates
+                .SingleOrDefaultAsync(x => x.Id == id);
+        }
     }
 }

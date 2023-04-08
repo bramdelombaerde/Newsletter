@@ -16,6 +16,7 @@ public class NewsletterDatastore : DbContext
     public DbSet<User> Users { get; set; }
     public DbSet<Subscription> Subscriptions { get; set; }
     public DbSet<NewsletterTemplate> NewsletterTemplates { get; set; }
+    public DbSet<Domain.Newsletter> Newsletters { get; set; }
 
     public override int SaveChanges()
     {
