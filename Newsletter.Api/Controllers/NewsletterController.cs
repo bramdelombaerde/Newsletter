@@ -49,7 +49,7 @@ namespace Newsletter.Api.Controllers
             var result = await _sender.Send(
                 new SendNewsletterCommand(
                     newsletterId,
-                    (Application.Newsletter.SendVia)sendNewsletter.SendVia)
+                    (Application.Newsletter.Source)sendNewsletter.SendVia)
                 );
 
             return result.IsFailure

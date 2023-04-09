@@ -1,6 +1,6 @@
 ﻿namespace Newsletter.Api.Models.Newsletter
 {
-    public enum SendVia
+    public enum Source
     {
         Email,
         ExternalService1,
