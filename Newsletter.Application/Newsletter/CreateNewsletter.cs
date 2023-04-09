@@ -35,7 +35,10 @@ namespace Newsletter.Application.Newsletter
             var content = newsletterTemplate.Html;
 
             foreach (var token in request.Tokens)
+            {
                 content = content.Replace("{{" + token.Name + "}}", token.Value);
+            }
+
 
             var newsletter = new Domain.Newsletter(titel, nextVersionNumber, content);
             await _newsletters.Create(newsletter);

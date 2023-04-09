@@ -3,5 +3,6 @@
     public interface IExternalClient1
     {
         Task<bool> SendNewsletter(Domain.Newsletter newsletter);
+        Task<string> GetMostRecentArticle();
     }
 }
