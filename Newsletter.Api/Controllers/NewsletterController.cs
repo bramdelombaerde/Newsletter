@@ -24,7 +24,7 @@ namespace Newsletter.Api.Controllers
                     createNewsletter.Tokens.Select(x => new CreateNewsletterToken(
                         x.Name,
                         x.Value,
-                        (Application.Newsletter.SendVia)x.Source)).ToList()
+                        (Application.Newsletter.NewsletterTokenSource)x.Source)).ToList()
             ));
 
             return result.IsFailure
