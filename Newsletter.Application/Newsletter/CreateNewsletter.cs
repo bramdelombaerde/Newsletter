@@ -5,7 +5,7 @@ using Newsletter.Core.Repositories;
 namespace Newsletter.Application.Newsletter
 {
     public record CreateNewsletterCommand(Guid TitelId, Guid TemplateId, List<CreateNewsletterToken> Tokens) : IRequest<IResult<CreateNewsletterResponse>>;
-    public record CreateNewsletterToken(string Name, string Value, Source Source);
+    public record CreateNewsletterToken(string Name, string Value, SendVia Source);
     public record CreateNewsletterResponse(Guid Id);
 
     public class CreateNewsletterHandler : IRequestHandler<CreateNewsletterCommand, IResult<CreateNewsletterResponse>>

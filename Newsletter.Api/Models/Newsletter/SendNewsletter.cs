@@ -2,6 +2,6 @@
 {
     public class SendNewsletter
     {
-        public Source SendVia { get; set; }
+        public SendVia SendVia { get; set; }
     }
 }

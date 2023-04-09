@@ -4,6 +4,6 @@
     {
         public string Name { get; set; }
         public string Value { get; set; }
-        public Source Source { get; set; }
+        public SendVia Source { get; set; }
     }
 }

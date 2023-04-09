@@ -6,7 +6,7 @@ using Newsletter.Core.Repositories;
 
 namespace Newsletter.Application.Newsletter
 {
-    public record SendNewsletterCommand(Guid NewsletterId, Source sendVia) : IRequest<IResult<SendNewsletterResponse>>;
+    public record SendNewsletterCommand(Guid NewsletterId, SendVia sendVia) : IRequest<IResult<SendNewsletterResponse>>;
     public record SendNewsletterToken(string Name, string Value, string Source);
     public record SendNewsletterResponse(Guid Id);
 
@@ -38,13 +38,13 @@ namespace Newsletter.Application.Newsletter
 
             var titel = await _titels.GetById(newsletter.TitelId);
 
-            if (request.sendVia == Source.Email)
+            if (request.sendVia == SendVia.Email)
                 await SendViaEmail(newsletter, titel);
 
-            if (request.sendVia == Source.ExternalService1)
+            if (request.sendVia == SendVia.ExternalService1)
                 await _externalClient1.SendNewsletter(newsletter);
 
-            if (request.sendVia == Source.ExternalService2)
+            if (request.sendVia == SendVia.ExternalService2)
                 await _externalClient2.SendNewsletter(newsletter);
 
             return Result.Success(new SendNewsletterResponse(newsletter.Id));
