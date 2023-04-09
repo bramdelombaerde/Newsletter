@@ -5,7 +5,7 @@ using Newsletter.Core.Repositories;
 
 namespace Newsletter.Application.Newsletter
 {
-    public record SendNewsletterCommand(Guid NewsletterId) : IRequest<IResult<SendNewsletterResponse>>;
+    public record SendNewsletterCommand(Guid NewsletterId, SendVia sendVia) : IRequest<IResult<SendNewsletterResponse>>;
     public record SendNewsletterToken(string Name, string Value, string Source);
     public record SendNewsletterResponse(Guid Id);
 
@@ -31,6 +31,20 @@ namespace Newsletter.Application.Newsletter
 
             var titel = await _titels.GetById(newsletter.TitelId);
 
+            if (request.sendVia == SendVia.Email)
+                await SendViaEmail(newsletter, titel);
+
+            if (request.sendVia == SendVia.ExternalService1)
+                await SendViaExternalService1(newsletter, titel);
+
+            if (request.sendVia == SendVia.ExternalService2)
+                await SendViaExternalService2(newsletter, titel);
+
+            return Result.Success(new SendNewsletterResponse(newsletter.Id));
+        }
+
+        private async Task SendViaEmail(Domain.Newsletter newsletter, Domain.Titel titel)
+        {
             foreach (var subscriber in titel.Subscriptions)
             {
                 await _emailSender.SendEmailAsync(
@@ -38,9 +52,14 @@ namespace Newsletter.Application.Newsletter
                     $"{titel.Name} Newsletter V{newsletter.Version}",
                     newsletter.Content);
             }
+        }
 
-            return Result.Success(new SendNewsletterResponse(newsletter.Id));
+        private async Task SendViaExternalService1(Domain.Newsletter newsletter, Domain.Titel titel)
+        {
+        }
 
+        private async Task SendViaExternalService2(Domain.Newsletter newsletter, Domain.Titel titel)
+        {
         }
     }
 }

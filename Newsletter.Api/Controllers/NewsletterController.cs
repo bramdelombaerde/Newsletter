@@ -44,10 +44,13 @@ namespace Newsletter.Api.Controllers
         }
 
         [HttpPost("{newsletterId:guid}/Send", Name = "SendNewsletter")]
-        public async Task<IActionResult> SendNewsletter(Guid newsletterId)
+        public async Task<IActionResult> SendNewsletter(Guid newsletterId, [FromBody] SendNewsletter sendNewsletter)
         {
             var result = await _sender.Send(
-                new SendNewsletterCommand(newsletterId));
+                new SendNewsletterCommand(
+                    newsletterId,
+                    (Application.Newsletter.SendVia)sendNewsletter.SendVia)
+                );
 
             return result.IsFailure
             ? ErrorActionResult(result)
