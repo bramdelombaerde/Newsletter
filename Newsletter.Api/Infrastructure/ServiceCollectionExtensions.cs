@@ -1,9 +1,11 @@
 ﻿using FluentValidation;
 using Microsoft.EntityFrameworkCore;
+using Newsletter.Core.Clients;
 using Newsletter.Core.Helper;
 using Newsletter.Infrastructure.Helper;
 using Newsletter.Infrastructure.Persistence;
 using Newsletter.Infrastructure.Repositories;
+using Newsletter.Infrastructure.Services;
 using System.Reflection;
 
 namespace Newsletter.Api.Infrastructure
@@ -35,6 +37,14 @@ namespace Newsletter.Api.Infrastructure
             services.AddDbContext<NewsletterDatastore>(options =>
                 options.UseSqlServer(connectionString)
             );
+
+            return services;
+        }
+
+        public static IServiceCollection AddClients(this IServiceCollection services)
+        {
+            services.AddHttpClient<IExternalClient1, ExternalClient1>();
+            services.AddHttpClient<IExternalClient2, ExternalClient2>();
 
             return services;
         }

@@ -21,6 +21,7 @@ ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddDbContext(configuration.GetConnectionString("Database"));
 builder.Services.AddCustomServices();
+builder.Services.AddClients();
 
 builder.Services.Configure<MailSettings>(builder.Configuration.GetSection(nameof(MailSettings)));
 

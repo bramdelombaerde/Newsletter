@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using Newsletter.Application.Shared;
+using Newsletter.Core.Clients;
 using Newsletter.Core.Helper;
 using Newsletter.Core.Repositories;
 
@@ -14,15 +15,21 @@ namespace Newsletter.Application.Newsletter
         private readonly Newsletters _newsletters;
         private readonly Titels _titels;
         private readonly IEmailSender _emailSender;
+        private readonly IExternalClient1 _externalClient1;
+        private readonly IExternalClient2 _externalClient2;
 
         public SendNewsletterHandler(
             Newsletters newsletters,
             Titels titels,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            IExternalClient1 externalClient1,
+            IExternalClient2 externalClient2)
         {
             _newsletters = newsletters;
             _titels = titels;
             _emailSender = emailSender;
+            _externalClient1 = externalClient1;
+            _externalClient2 = externalClient2;
         }
         public async Task<IResult<SendNewsletterResponse>> Handle(SendNewsletterCommand request, CancellationToken cancellationToken)
         {
@@ -35,10 +42,10 @@ namespace Newsletter.Application.Newsletter
                 await SendViaEmail(newsletter, titel);
 
             if (request.sendVia == SendVia.ExternalService1)
-                await SendViaExternalService1(newsletter, titel);
+                await _externalClient1.SendNewsletter(newsletter);
 
             if (request.sendVia == SendVia.ExternalService2)
-                await SendViaExternalService2(newsletter, titel);
+                await _externalClient2.SendNewsletter(newsletter);
 
             return Result.Success(new SendNewsletterResponse(newsletter.Id));
         }
@@ -52,14 +59,6 @@ namespace Newsletter.Application.Newsletter
                     $"{titel.Name} Newsletter V{newsletter.Version}",
                     newsletter.Content);
             }
-        }
-
-        private async Task SendViaExternalService1(Domain.Newsletter newsletter, Domain.Titel titel)
-        {
-        }
-
-        private async Task SendViaExternalService2(Domain.Newsletter newsletter, Domain.Titel titel)
-        {
         }
     }
 }
