@@ -2,8 +2,8 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Newsletter.Api.Infrastructure;
 using Newsletter.Api.Models.Titel.Validation;
-using Newsletter.Appconfig;
 using Newsletter.Application.Titel;
+using Newsletter.Infrastructure.Appconfig;
 
 var builder = WebApplication.CreateBuilder(args);
 

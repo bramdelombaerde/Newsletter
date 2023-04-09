@@ -3,8 +3,8 @@ using MailKit.Security;
 using Microsoft.Extensions.Options;
 using MimeKit;
 using MimeKit.Text;
-using Newsletter.Appconfig;
 using Newsletter.Core.Helper;
+using Newsletter.Infrastructure.Appconfig;
 
 namespace Newsletter.Infrastructure.Helper;
 public class EmailSender : IEmailSender
