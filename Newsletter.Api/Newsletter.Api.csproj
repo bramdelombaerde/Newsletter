@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Newsletter.Appconfig\Newsletter.Appconfig.csproj" />
     <ProjectReference Include="..\Newsletter.Application\Newsletter.Application.csproj" />
     <ProjectReference Include="..\Newsletter.Infrastructure\Newsletter.Infrastructure.csproj" />
   </ItemGroup>

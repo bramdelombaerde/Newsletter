@@ -2,6 +2,7 @@ using FluentValidation;
 using FluentValidation.AspNetCore;
 using Newsletter.Api.Infrastructure;
 using Newsletter.Api.Models.Titel.Validation;
+using Newsletter.Appconfig;
 using Newsletter.Application.Titel;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -20,6 +21,8 @@ ConfigurationManager configuration = builder.Configuration;
 
 builder.Services.AddDbContext(configuration.GetConnectionString("Database"));
 builder.Services.AddCustomServices();
+
+builder.Services.Configure<MailSettings>(builder.Configuration.GetSection(nameof(MailSettings)));
 
 var app = builder.Build();
 
