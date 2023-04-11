@@ -23,6 +23,16 @@ namespace Newsletter.Api.Controllers
             : Ok(result.Value);
         }
 
+        [HttpGet("{id}", Name = "GetById")]
+        public async Task<IActionResult> Get(Guid id)
+        {
+            var result = await _sender.Send(new GeTitelByIdQuery(id));
+
+            return result.IsFailure
+            ? ErrorActionResult(result)
+            : Ok(result.Value);
+        }
+
         [HttpPost(Name = "CreateTitel")]
         public async Task<IActionResult> Post([FromBody] CreateTitel createTitel)
         {
