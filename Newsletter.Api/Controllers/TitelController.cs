@@ -6,7 +6,7 @@ using Newsletter.Application.Titel;
 
 namespace Newsletter.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route("titels")]
     [ApiController]
     public class TitelController : NewsletterControllerBase
     {

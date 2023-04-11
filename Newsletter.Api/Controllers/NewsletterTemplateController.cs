@@ -6,7 +6,7 @@ using Newsletter.Application.NewsletterTemplate;
 
 namespace Newsletter.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route("newslettertemplates")]
     [ApiController]
     public class NewsletterTemplateController : NewsletterControllerBase
     {

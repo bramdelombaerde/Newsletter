@@ -6,7 +6,7 @@ using Newsletter.Application.User;
 
 namespace Newsletter.Api.Controllers
 {
-    [Route("[controller]")]
+    [Route("users")]
     [ApiController]
     public class UserController : NewsletterControllerBase
     {
