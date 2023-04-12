@@ -34,7 +34,12 @@ namespace Newsletter.Application.Newsletter
         public async Task<IResult<SendNewsletterResponse>> Handle(SendNewsletterCommand request, CancellationToken cancellationToken)
         {
             var newsletter = await _newsletters.GetById(request.NewsletterId);
-            if (newsletter == null) return Result.NotFound<SendNewsletterResponse>($"NewsletterId '{request.NewsletterId}' not found");
+
+            if (newsletter == null)
+                return Result.NotFound<SendNewsletterResponse>($"Newsletter with id '{request.NewsletterId}' not found");
+
+            if (newsletter.IsArchived == true)
+                return Result.BusinessRuleError<SendNewsletterResponse>($"Newsletter with id '{request.NewsletterId}' can not be send because it is archived.");
 
             var titel = await _titels.GetById(newsletter.TitelId);
 
