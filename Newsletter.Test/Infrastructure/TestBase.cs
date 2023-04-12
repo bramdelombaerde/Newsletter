@@ -1,4 +1,6 @@
-﻿namespace Newsletter.Test.Infrastructure
+﻿using Newsletter.Api.Models.Titel;
+
+namespace Newsletter.Test.Infrastructure
 {
     public abstract class TestBase
     {
@@ -8,5 +10,14 @@
         }
 
         public ApiWebApplicationFactory Fixture { get; }
+
+        public CreateTitel GenerateCreateTitel()
+        {
+            return new CreateTitel()
+            {
+                Name = "Nieuwsblad",
+                ShortName = "NB",
+            };
+        }
     }
 }

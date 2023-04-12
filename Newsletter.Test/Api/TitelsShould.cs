@@ -1,5 +1,4 @@
 ﻿using FluentAssertions;
-using Newsletter.Api.Models.Titel;
 using Newsletter.Application.Titel;
 using Newsletter.Test.Infrastructure;
 using Newtonsoft.Json;
@@ -16,7 +15,7 @@ public class TitelsShould : TestBase
     {
         //GIVEN
         await Fixture.InitializeAsync();
-        var createTitel = new CreateTitel() { Name = "Nieuwsblad", ShortName = "NB" };
+        var createTitel = GenerateCreateTitel();
         var json = JsonConvert.SerializeObject(createTitel);
         var data = new StringContent(json, Encoding.UTF8, "application/json");
 
